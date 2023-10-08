@@ -11,36 +11,25 @@
 
 <Header /> 
 <hr>
-<h1>
-    {#each posts as Post}
-        <p></p>
-    {/each}
-</h1>
+
+    
+
 <div class="blogbody">
+    {#each posts as Post,i}
     <div class="blog">
-        <div class="p-card">
-            <img class="p-card__thumbnail" src="https://assets.ubuntu.com/v1/dca2e4c4-raspberry-logo.png" alt="">
+        <div class="p-card card">
+            <h4>Post {i+1}</h4>
             <hr class="u-sv1">
-            <h3>Raspberry Pi2 and Pi3</h3>
-            <p class="p-card__content">For fun, for education and for profit, the RPi makes device development personal and entertaining. With support for both the Pi2 and the new Pi3, Ubuntu Core supports the world’s most beloved board.</p>
+            <img src="{Post.featured_media}" alt="">
+            <h3 class="center">{Post.title.rendered}</h3>
+            <h5 style="font-style: italic;">By <span style="color: blueviolet;">{Post["_embedded"]["author"][0]["name"]}</span> on {Post["_start_day"]}/{Post["_start_month"]}/{Post["_start_year"]}</h5>
+            <hr>
+            <h4 style="margin: 0;">
+                Article 
+            </h4>
           </div>
     </div>
-    <div class="blog">
-        <div class="p-card">
-            <img class="p-card__thumbnail" src="https://assets.ubuntu.com/v1/dca2e4c4-raspberry-logo.png" alt="">
-            <hr class="u-sv1">
-            <h3>Raspberry Pi2 and Pi3</h3>
-            <p class="p-card__content">For fun, for education and for profit, the RPi makes device development personal and entertaining. With support for both the Pi2 and the new Pi3, Ubuntu Core supports the world’s most beloved board.</p>
-          </div>
-    </div>
-    <div class="blog">
-        <div class="p-card">
-            <img class="p-card__thumbnail" src="https://assets.ubuntu.com/v1/dca2e4c4-raspberry-logo.png" alt="">
-            <hr class="u-sv1">
-            <h3>Raspberry Pi2 and Pi3</h3>
-            <p class="p-card__content">For fun, for education and for profit, the RPi makes device development personal and entertaining. With support for both the Pi2 and the new Pi3, Ubuntu Core supports the world’s most beloved board.</p>
-          </div>
-    </div>
+    {/each}
     
 </div>
 </body>
@@ -48,13 +37,23 @@
 <style>
 .blogbody{
     margin: 50px;
-    background-color: aqua;
+    
     display:flex;
     justify-content: space-around;   
 }
 .blog{
     
-    
+    border-top: 3px solid purple;
+    border-radius: 7px;
     width: 25vw;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    border-radius: 7px;
+}
+.center{
+    flex-grow: 1;
 }
 </style>
