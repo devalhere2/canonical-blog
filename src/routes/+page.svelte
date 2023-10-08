@@ -3,7 +3,6 @@
     import '../../dist/style.css';
     import Header from './header.svelte';
     export let data;
-    console.log(data)
     let { posts } = data;
 </script>
 
